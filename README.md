@@ -12,9 +12,17 @@ Write a command line tool that takes a list of numbers for international lotteri
 - *Bonus*: Allow for multiple runs. E.g. `cargo run -- 6 45 6 49 5 50` does three runs: 6 out of 45, 6 out of 49, 5 out of 50
 - Use the `rand` crate for random number generation ([this might be helpful](https://docs.rs/rand/0.6.4/rand/seq/trait.SliceRandom.html#tymethod.choose_multiple)) 
 
+
 ## Working with Codespaces
 
+1. Fork this repo
+2. On the upper right corner, there is a button named *Code*
+3. Click the *Code* button and click "New codespace"
+4. A new codespace for you pops up. You can reuse this codespace after creation.
 
+You are all set up with VSCode, Rust, a Terminal, etc.
+
+See more about [Codespaces](GitHub Codespaces)
 
 ## Tests and execution
 

@@ -2,7 +2,11 @@ use std::env;
 
 use rand::{prelude::IteratorRandom, thread_rng};
 
-struct Lotto {}
+struct Lotto {
+    take: usize,
+    from: usize,
+    numbers: Vec<usize>,
+}
 
 impl Lotto {
     fn new(take: usize, from: usize) -> Self {
