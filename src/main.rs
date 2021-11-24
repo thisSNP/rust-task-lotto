@@ -13,7 +13,8 @@ impl Lotto {
         todo!("Implement")
     }
 
-    fn get_numbers(self) -> Vec<usize> {
+    /** This is a "getter" **/
+    fn get_numbers(&self) -> Vec<usize> {
         todo!("Implement")
     }
 }
