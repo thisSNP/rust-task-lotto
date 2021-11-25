@@ -12,10 +12,6 @@ impl Lotto {
     fn new(take: usize, from: usize) -> Self {
         todo!("Implement")
     }
-
-    fn get_numbers(self) -> Vec<usize> {
-        todo!("Implement")
-    }
 }
 
 fn format_lotto_results(lotto: &Lotto) -> String {
@@ -46,7 +42,7 @@ fn test_format_lotto_results() {
 fn test_lotto_constructor() {
     let lotto = Lotto::new(6, 45);
 
-    let numbers = lotto.get_numbers();
+    let numbers = lotto.numbers;
 
     assert_eq!(numbers.len(), 6);
 }
@@ -56,7 +52,7 @@ fn test_lotto_constructor_uniques() {
     use std::collections::HashSet;
     let lotto = Lotto::new(6, 45);
 
-    let numbers = lotto.get_numbers();
+    let numbers = lotto.numbers;
     let set: HashSet<usize> = numbers.into_iter().collect();
 
     assert_eq!(set.len(), 6);
