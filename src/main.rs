@@ -41,23 +41,57 @@ fn format_lotto_results(lotto: &Lotto) -> String {
     format!("{} of {}: {:?}", lotto.take, lotto.from, lotto.numbers)
 }
 
+
+
 fn main() {
     let args: Vec<String> = env::args().collect();
-    if args.len() > 3 {
-        println!("Too much arguments!");
-        return;
-    }
+
     if args.len() < 3 {
-        println!("Too less arguments!");
-        return;
+        println!("To less arguments provided!");
+        exit(1);
+    }
+    else if args.len() == 3 {
+        let take: usize = args[1].parse().expect("Could not parse the takes!");
+        let from: usize = args[2].parse().expect("Could not parse the range (out of X)!");
+
+        if take > from {
+            println!("The pool ({}) must be grater than the numbers ({}) you like to choose!", from, take);
+            exit(1);
+        }
+
+        let lotto = Lotto::new(take, from);
+        println!("{}", format_lotto_results(&lotto));
+        exit(0);
+    }
+    else if (args.len() - 1) % 2 == 0 {
+        let mut runs = (args.len() - 1) / 2;
+        let mut i = 1;
+
+        while runs != 0 {
+            let take: usize = args[i].parse().expect("Could not parse the takes!");
+            i = i + 1;
+            let from: usize = args[i].parse().expect("Could not parse the range (out of X)!");
+            i = i + 1;
+
+            if take > from {
+                println!("The pool ({}) must be grater than the numbers ({}) you like to choose!", from, take);
+                exit(1);
+            }
+
+            let lotto = Lotto::new(take, from);
+
+            println!("{} ", format_lotto_results(&lotto));
+            runs = runs - 1;
+
+        }
     }
 
-    let take: usize = args[1].parse().expect("Could not parse the takes!");
-    let from: usize = args[2].parse().expect("Could not parse the range (out of X)!");
-
-    let lotto = Lotto::new(take, from);
-
-    println!("{}", format_lotto_results(&lotto));
+    // let take: usize = args[1].parse().expect("Could not parse the takes!");
+    // let from: usize = args[2].parse().expect("Could not parse the range (out of X)!");
+    //
+    // let lotto = Lotto::new(take, from);
+    //
+    // println!("{}", format_lotto_results(&lotto));
     exit(0);
 }
 
