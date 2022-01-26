@@ -13,7 +13,27 @@ struct Lotto {
 
 impl Lotto {
     fn new(take: usize, from: usize) -> Self {
-        todo!("Implement")
+
+        let mut winning_numbers: Vec<usize> = Vec::with_capacity(take);
+        let mut rng = thread_rng();
+        let mut i = 0;
+        while i < take {
+            let num = rng.gen_range(0..=from);
+            if winning_numbers.is_empty() {
+                winning_numbers.push(num);
+                i = i +1;
+            }
+            else if !winning_numbers.contains(&num) {
+                winning_numbers.push(num);
+                i = i + 1;
+            }
+        }
+
+        Lotto {
+            take,
+            from,
+            numbers: winning_numbers,
+        }
     }
 }
 
