@@ -1,6 +1,9 @@
-use std::env;
 
-use rand::{prelude::IteratorRandom, thread_rng};
+use std::env;
+use std::process::exit;
+use rand::{Rng, thread_rng};
+
+
 
 struct Lotto {
     take: usize,
