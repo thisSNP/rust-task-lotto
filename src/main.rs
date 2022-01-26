@@ -43,7 +43,22 @@ fn format_lotto_results(lotto: &Lotto) -> String {
 
 fn main() {
     let args: Vec<String> = env::args().collect();
-    todo!("Implement CLI")
+    if args.len() > 3 {
+        println!("Too much arguments!");
+        return;
+    }
+    if args.len() < 3 {
+        println!("Too less arguments!");
+        return;
+    }
+
+    let take: usize = args[1].parse().expect("Could not parse the takes!");
+    let from: usize = args[2].parse().expect("Could not parse the range (out of X)!");
+
+    let lotto = Lotto::new(take, from);
+
+    println!("{}", format_lotto_results(&lotto));
+    exit(0);
 }
 
 #[test]
