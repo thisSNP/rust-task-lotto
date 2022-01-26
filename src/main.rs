@@ -18,8 +18,7 @@ impl Lotto {
 }
 
 fn format_lotto_results(lotto: &Lotto) -> String {
-    // Tip: Use the format macro
-    todo!("Implement")
+    format!("{} of {}: {:?}", lotto.take, lotto.from, lotto.numbers)
 }
 
 fn main() {
